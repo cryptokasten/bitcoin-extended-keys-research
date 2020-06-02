@@ -1,7 +1,7 @@
 #+TITLE: Bitcoin extended keys research
 #+OPTIONS: ^:nil
-#+PROPERTY: header-args:sh :session *shell bitcoin-extended-keys-research sh* :results silent raw
-#+PROPERTY: header-args:python :session *shell bitcoin-extended-keys-research python* :results silent raw
+#+PROPERTY: header-args:sh :session *shell bitcoin-extended-keys-research sh* :results silent raw :exports both
+#+PROPERTY: header-args:python :session *shell bitcoin-extended-keys-research python* :results silent raw :exports both
 
 ** System environment
 
