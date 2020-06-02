@@ -1,0 +1,94 @@
+#+TITLE: Bitcoin extended keys research
+#+OPTIONS: ^:nil
+#+PROPERTY: header-args:sh :session *shell bitcoin-extended-keys-research sh* :results silent raw
+#+PROPERTY: header-args:python :session *shell bitcoin-extended-keys-research python* :results silent raw
+
+** System environment
+
+- Debian 9.11
+
+- Python 3.7.0
+
+** Imports
+
+#+BEGIN_SRC python
+import base58
+#+END_SRC
+
+** Extended key init
+*** Privkey
+
+#+BEGIN_SRC python
+key = "xprv9s21ZrQH143K4CpiRKJX4bnVcxvzkJheXJ8kYBspNruuR7EZVgNvpUBgJRXzuhDK9TER9axkRJCip6EjsAPd5afwJpD2McCVEHQt6nzYznu"
+#+END_SRC
+
+*** Pubkey
+
+#+BEGIN_SRC python
+key = "tpubD6NzVbkrYhZ4YosceoNrQJmj2WYodUz19Ujxm28QGfEmZnqadAb8L1DrWMx6b3icdo8Zg7cPEzYhWzryeeFwumu3WU1JUwy9aBuDZ2ktyXQ"
+#+END_SRC
+
+** Deserialize
+
+#+BEGIN_SRC python :results replace code
+data = base58.b58decode_check(key)
+data.hex()
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+0488ade4000000000000000000d78b76396ada0500f7e7eb56f21a158e7b6a8256d4f734e9e51c3d2f0405eca600b0288fdef617a458c31fca5766c153239dfd65eac5fed8aac47ebef13ed5f6e4
+#+end_src
+
+** Parse
+
+#+BEGIN_SRC python :results replace code
+prefix = int.from_bytes(data[:4], "big")
+prefix
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+76066276
+#+end_src
+
+#+BEGIN_SRC python :results replace code
+depth = data[4]
+depth
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+0
+#+end_src
+
+#+BEGIN_SRC python :results replace code
+fingerprint = data[5:9]
+fingerprint.hex()
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+00000000
+#+end_src
+
+#+BEGIN_SRC python :results replace code
+index = int.from_bytes(data[9:13], "big")
+index
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+0
+#+end_src
+
+#+BEGIN_SRC python :results replace code
+chaincode = data[13:45]
+key = data[46:]
+chaincode.hex(), key.hex()
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python
+('d78b76396ada0500f7e7eb56f21a158e7b6a8256d4f734e9e51c3d2f0405eca6', 'b0288fdef617a458c31fca5766c153239dfd65eac5fed8aac47ebef13ed5f6e4')
+#+end_src
