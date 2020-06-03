@@ -30,7 +30,7 @@ key = "tpubD6NzVbkrYhZ4YosceoNrQJmj2WYodUz19Ujxm28QGfEmZnqadAb8L1DrWMx6b3icdo8Zg
 
 ** Deserialize
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 data = base58.b58decode_check(key)
 data.hex()
 #+END_SRC
@@ -42,7 +42,7 @@ data.hex()
 
 ** Parse
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 prefix = int.from_bytes(data[:4], "big")
 prefix
 #+END_SRC
@@ -52,7 +52,7 @@ prefix
 76066276
 #+end_src
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 depth = data[4]
 depth
 #+END_SRC
@@ -62,7 +62,7 @@ depth
 0
 #+end_src
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 fingerprint = data[5:9]
 fingerprint.hex()
 #+END_SRC
@@ -72,7 +72,7 @@ fingerprint.hex()
 00000000
 #+end_src
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 index = int.from_bytes(data[9:13], "big")
 index
 #+END_SRC
@@ -82,7 +82,7 @@ index
 0
 #+end_src
 
-#+BEGIN_SRC python :results replace code
+#+BEGIN_SRC python :results replace code :exports both
 chaincode = data[13:45]
 key = data[46:]
 chaincode.hex(), key.hex()
