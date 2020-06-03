@@ -3,6 +3,8 @@
 #+PROPERTY: header-args:sh :session *shell bitcoin-extended-keys-research sh* :results silent raw :exports both
 #+PROPERTY: header-args:python :session *shell bitcoin-extended-keys-research python* :results silent raw :exports both
 
+[[https://github.com/cryptokasten][file:https://img.shields.io/badge/dynamic/json.svg?url=https://api.github.com/users/cryptokasten&label=Cryptokasten&query=$.public_repos]]
+
 ** System environment
 
 - Debian 9.11
